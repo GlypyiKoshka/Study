@@ -10,7 +10,7 @@ public class main3 {
 
         System.out.println("Пользователь, введи число n:");
         int n = scanner.nextInt();
-/*
+
      // 1
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
@@ -50,7 +50,7 @@ public class main3 {
             }
             System.out.println();
         }
-*/
+
         // 4
 
         for (int i = 0; i < n; i++) {
@@ -63,7 +63,7 @@ public class main3 {
             }
             System.out.println();
         }
-/*
+
         // 5 второй вариант
 
         for (int i = 0; i < n; i++) {
@@ -117,8 +117,6 @@ public class main3 {
             System.out.println();
         }
 
-
-
         // 9
 
         for (int i = 0; i < n; i++) {
@@ -131,8 +129,7 @@ public class main3 {
             }
             System.out.println();
         }
-*/
+
     }
 }
 
-// if (i + j <= n - 1 && i > j - 1 ) {
