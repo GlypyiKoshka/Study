@@ -31,10 +31,11 @@ public class bla {
         numup(n / 10);
         n = n % 10 + 1;
         if (n == 10) {
-            System.out.print(n * 0);
+            System.out.print(n);
         } else System.out.print(n);
 
     }
 }
+
 
 
