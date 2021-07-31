@@ -15,8 +15,8 @@ public class main2 {
         System.out.println("Число: ");
 
         n = scanner.nextInt();
- /*
-         // 1
+
+/*         // 1
 
         for ( int i = a; i >= 0; i -= 2) {
             System.out.println(i);
@@ -48,10 +48,10 @@ public class main2 {
         System.out.println();
         for (int i = 0; i < 10; i++ ) {
             System.out.print("* ");
-        } */
-
+        }
+*/
         // 6
-/*
+
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 System.out.print("*");
@@ -85,7 +85,7 @@ public class main2 {
             }
             System.out.println();
         }
-*/
+
         // 10
 
         for (int i = n; i > 0; i -= 2) {
@@ -107,5 +107,6 @@ public class main2 {
             }
             System.out.println();
         }
+
     }
 }
