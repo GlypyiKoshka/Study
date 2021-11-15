@@ -37,7 +37,6 @@ public class Sort {
 
     static void BubbleSort(int[] arr) {
         boolean sorted = false;
-//        int count = 0;
         while (!sorted) {
             sorted = true;
             for (int i = 0; i < arr.length - 1; i++) {
@@ -48,9 +47,7 @@ public class Sort {
                     sorted = false;
                 }
             }
-//            count++;
         }
-//        return count;
     }
 
     /////////////// Простые вставки ////////////////////
