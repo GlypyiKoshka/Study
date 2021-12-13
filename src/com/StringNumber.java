@@ -1,92 +1,84 @@
-//package com;
-//
-//import java.util.Random;
-//
-//public class StringNumber {
-//    public static void main(String[] args) {
-//        int[] arr = new int[1];
-//        int n=0;
-//        int count = 0;
-//
-//        addArray(arr);
-//        numlength(n);
-//
-//        String[] ones = new String[]{"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-//        String[] tens = new String[]{"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
-//        String[] teens = new String[]{"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
-//        String hundred = "hundred";
-//        String[] orders = new String[]{"", "thousand", "million", "billion"};
-//
-//        for (int i = 0; i < arr.length; i++) {
-//            if (i < 10) {
-//                System.out.println(ones[i]);
-//            }
+package com;
+
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
+public class StringNumber {
+
+    static String[] ones = new String[]{"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+    static String[] tens = new String[]{"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+    static String[] teens = new String[]{"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
+    static String hundred = "hundred";
+    static String[] orders = new String[]{"", "thousand", "million", "billion"};
+
+    public static void main(String[] args) {
+
+        System.out.println("Число: ");
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        ArrayList<Integer> num = new ArrayList<>();
+        addArrayList(num, n);
+        
+        if (n > 0) {
+            for (int i = 0; i < num.size(); i++) {
+                if (i == 9) {
+                    System.out.println(getOnes(num) + getOrders(num) +;);
+                }
+                
+            }
+        }
+
+    }
+
+    static void addArrayList(ArrayList<Integer> num, int n) {
+        while (n > 0) {
+            int result = n % 10;
+            n = n / 10;
+            num.add(result);
+        }
+    }
+
+    static void getOnes(ArrayList<Integer> edinici) {
+        int result = 0;
+        for (int i = 0; i >= 0 && i < 10; i++) {
+            result += i;
+        }
+        System.out.println(ones[edinici.get(result)]);
+    }
+
+    static void getTens(ArrayList<Integer> desytie) {
+        int result = 0;
+        for (int i = 0; i >= 20 && i < 100; i++) {
+            result += i;
+        }
+        System.out.println(tens[desytie.get(result)]);
+    }
+
+    static void getTeens(ArrayList<Integer> desytki) {
+        int result = 0;
+        for (int i = 0; i >= 10 && i < 20; i++) {
+            result += i;
+        }
+        System.out.println(teens[desytki.get(result)]);
+    }
+
+//    static void getHundred(ArrayList<Integer> sotni) {
+//        int result = 0;
+//        for (int i = 0; i >= 100 ; i++) {
+//            result += i;
 //        }
-//        if (numlength(n) == 3) {
-////            System.out.println(numlength(arr));
-//        }
-//
-//
+//        System.out.println(hundred[sotni.get(result)]);
 //    }
-//
-////    static int numlength(int arr) {
-////        int count = 0;
-////        int n;
-////        while (addArray(n) > 0) {
-////            n = n / 10;
-//////            count ++;
-////        }
-////        return n;
-////    }
-//
-//
-//    static void addArray(int[] arr) {
-//        Random r = new Random();
-//        for (int i = 0; i < arr.length; i++) {
-//            arr[i] = r.nextInt(500 - (-500) + 1) - 500;
-//        }
-//    }
-//
-//    static int ones(int[] arr) {
-//        int ones = 0;
-//        for (int i = 0; i < 10; i++) {
-//            ones++;
-//        }
-//        return ones;
-//    }
-//
-//    static int tens(int[] arr) {
-//        int tens = 0;
-//        for (int i = 10; i < 100; i++) {
-//            tens++;
-//        }
-//        return tens;
-//    }
-//
-//    static int teens(int[] arr) {
-//        int teens = 0;
-//        for (int i = 10; i < 20; i++) {
-//            teens++;
-//        }
-//        return teens;
-//    }
-//
-//    static int hundred(int[] arr) {
-//        int hundred = 0;
-//        for (int i = 0; i < 101; i++) {
-//            hundred++;
-//        }
-//        return hundred;
-//    }
-//
-//    static int orders(int[] arr) {
-//        int orders = 0;
-//        for (int i = 0; i < 101; i++) {
-//            orders++;
-//        }
-//        return orders;
-//    }
-//
-//
-//}
-//
+
+    static void getOrders(ArrayList<Integer> ordery) {
+        int result = 0;
+        for (int i = 0; i >= 1000 ; i++) {
+            result += i;
+        }
+        System.out.println(orders[ordery.get(result)]);
+    }
+
+}
+

@@ -196,23 +196,31 @@ public class DinamicArray {
         int n = scanner.nextInt();
         ArrayList<Integer> arr = new ArrayList<>();
 
-        isPrime(n);
+//        isPrime(n);
 
-        boolean isPrime = true;
-        for (int i = 2; i <= n - 1; i++) {
-            if (n % i == 0) {
-                isPrime = false;
-                break;
-            } else arr.add(i);
-            System.out.println(arr.get(i));
+        boolean isPrime = false;
+        for (int i = 2; i < n - 1; i++) {
+            isPrime = true;
+            for (int j = 2; j < i - 1; j++) {
+                if (i % j == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+            if (isPrime) {
+                arr.add(i);
+            }
+        }
+        for (int i = 0; i < arr.size(); i++) {
+            System.out.print(arr.get(i) + " ");
         }
     }
 
-    static boolean isPrime(int n) {
-        if (n < 2) return false;
-        for (int i = 2; i <= n - 1; i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
-    }
+//    static boolean isPrime(int n) {
+//        if (n < 2) return false;
+//        for (int i = 2; i <= n - 1; i++) {
+//            if (n % i == 0) return false;
+//        }
+//        return true;
+//    }
 }

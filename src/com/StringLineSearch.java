@@ -13,8 +13,8 @@ public class StringLineSearch {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Наберите строку ");
-        String s = scanner.next();
+       /* System.out.print("Наберите строку ");
+        String s = scanner.nextLine();
         System.out.println("Введите символ ");
 
         char ch = scanner.next().charAt(0);
@@ -32,27 +32,38 @@ public class StringLineSearch {
 
     }
 }
-
+*/
 
 /*
 Пользователь вводит строку. Необходимо проверить, является ли эта строка палиндромом.
 При решении задачи исходную строку нельзя изменять, копировать, изменять при копировании и прочие действия,
 связанные с изменением. Проверка должна выполнится не более чем за один проход по строке.
  */
-    /*    System.out.println("Проверка на полиндром ");
-        String s = scanner.next();
+        System.out.println("Проверка на полиндром ");
+        String s = scanner.nextLine();
 
-        int count = 0;
 
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
-                count++;
-                System.out.println("не палиндром ");
+        boolean pal = true;
+        int a = 0;
+        int z = s.length() - 1;
+
+        while (z <= a) {
+            if (s.charAt(a) == ' ') {
+                a += 1;
+            }
+            if (s.charAt(z) == ' ') {
+                z -= 1;
+            }
+            if (s.charAt(a) == s.charAt(z)) {
+                a++;
+                z--;
+            } else {
+                System.out.println("Не палиндром ");
                 break;
             }
         }
-        if (count == 0) {
-            System.out.println("палиндром ");
+        if (pal) {
+            System.out.println("Палиндром");
         }
-        */
-
+    }
+}
