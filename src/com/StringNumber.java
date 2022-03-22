@@ -20,16 +20,14 @@ public class StringNumber {
 
         ArrayList<Integer> num = new ArrayList<>();
         addArrayList(num, n);
-        
+
         if (n > 0) {
             for (int i = 0; i < num.size(); i++) {
                 if (i == 9) {
-                    System.out.println(getOnes(num) + getOrders(num) +;);
+//                    System.out.println(getOnes(num) + getOrders(num));
                 }
-                
             }
         }
-
     }
 
     static void addArrayList(ArrayList<Integer> num, int n) {
@@ -64,17 +62,11 @@ public class StringNumber {
         System.out.println(teens[desytki.get(result)]);
     }
 
-//    static void getHundred(ArrayList<Integer> sotni) {
-//        int result = 0;
-//        for (int i = 0; i >= 100 ; i++) {
-//            result += i;
-//        }
-//        System.out.println(hundred[sotni.get(result)]);
-//    }
+
 
     static void getOrders(ArrayList<Integer> ordery) {
         int result = 0;
-        for (int i = 0; i >= 1000 ; i++) {
+        for (int i = 0; i >= 1000; i++) {
             result += i;
         }
         System.out.println(orders[ordery.get(result)]);
