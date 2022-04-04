@@ -28,7 +28,7 @@ public class XO {
             int f = scanner.nextInt();
             int s = scanner.nextInt();
 
-            while (f < 1 || f > 3 || s < 1 || s > 3 || field[f - 1][s - 1].equals("X") || field[f - 1][s - 1].equals("0")) {
+            while (f < 1 || f > 3 || s < 1 || s > 3 || !field[f - 1][s - 1].equals(" ")) {
                 System.out.println("Неверные координаты, повторите ввод: ");
                 f = scanner.nextInt();
                 s = scanner.nextInt();
@@ -42,71 +42,39 @@ public class XO {
                 count++;
             } else if (count == 9) {
                 System.out.println("Eng game ");
+                go = false;
             }
 
             printfield(field);
+            whowinner(field, go);
 
-            go = Xwinner(field, go);
-            go = Owinner(field, go);
         }
     }
 
-    static boolean Xwinner(String[][] field, boolean go) {
-        if (field[0][0].equals("X") && field[0][1].equals("X") && field[0][2].equals("X")) { // 1 горизонт
-            System.out.println("X win!");
-            go = false;
-        } else if (field[1][0].equals("X") && field[1][1].equals("X") && field[1][2].equals("X")) { // 2 горизонт
-            System.out.println("X win!");
-            go = false;
-        } else if (field[02][0].equals("X") && field[2][1].equals("X") && field[2][2].equals("X")) {  // 3 горизонт
-            System.out.println("X win!");
-            go = false;
-        } else if (field[0][0].equals("X") && field[1][1].equals("X") && field[2][2].equals("X")) { // \ диагональ
-            System.out.println("X win!");
-            go = false;
+    static boolean whowinner(String[][] field, boolean go) {
+        for (int i = 0; i < field.length; i++) {
+            if (field[0][i].equals(field[1][i]) && field[1][i].equals(field[2][i]) && !field[0][i].equals(" ") || field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[0][i].equals(" ")) {
+                go = false;
+                System.out.println("X win!");
+            } else if (field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[0][i].equals(" ")) {
+                go = false;
+                System.out.println("0 win!");
+            } else diagonal(field);
+            break;
+        }
+        return go;
+    }
+
+    static void diagonal(String[][] field) {
+        if (field[0][0].equals("X") && field[1][1].equals("X") && field[2][2].equals("X")) { // \ диагональ
+            System.out.println("X win");
         } else if (field[2][0].equals("X") && field[1][1].equals("X") && field[0][2].equals("X")) { // / диагональ
-            System.out.println("X win!");
-            go = false;
-        } else if (field[0][0].equals("X") && field[1][0].equals("X") && field[2][0].equals("X")) { // 1 вертикаль
-            System.out.println("X win!");
-            go = false;
-        } else if (field[0][1].equals("X") && field[1][1].equals("X") && field[2][1].equals("X")) { // 2 вертикаль
-            System.out.println("X win!");
-            go = false;
-        } else if (field[0][2].equals("X") && field[1][2].equals("X") && field[2][2].equals("X")) { // 3 вертикаль
-            System.out.println("X win!");
-            go = false;
-        }
-        return go;
-    }
-
-    static boolean Owinner(String[][] field, boolean go) {
-        if (field[0][0].equals("0") && field[0][1].equals("0") && field[0][2].equals("0")) { // 1 горизонт
-            System.out.println("0 win!");
-            go = false;
-        } else if (field[1][0].equals("0") && field[1][1].equals("0") && field[1][2].equals("0")) { // 2 горизонт
-            System.out.println("0 win!");
-            go = false;
-        } else if (field[02][0].equals("0") && field[2][1].equals("0") && field[2][2].equals("0")) {  // 3 горизонт
-            System.out.println("0 win!");
-            go = false;
+            System.out.println("X win");
         } else if (field[0][0].equals("0") && field[1][1].equals("0") && field[2][2].equals("0")) { // \ диагональ
-            System.out.println("0 win!");
-            go = false;
+            System.out.println("0 win");
         } else if (field[2][0].equals("0") && field[1][1].equals("0") && field[0][2].equals("0")) { // / диагональ
-            System.out.println("0 win!");
-            go = false;
-        } else if (field[0][0].equals("0") && field[1][0].equals("0") && field[2][0].equals("0")) { // 1 вертикаль
-            System.out.println("0 win!");
-            go = false;
-        } else if (field[0][1].equals("0") && field[1][1].equals("0") && field[2][1].equals("0")) { // 2 вертикаль
-            System.out.println("0 win!");
-            go = false;
-        } else if (field[0][2].equals("0") && field[1][2].equals("0") && field[2][2].equals("0")) { // 3 вертикаль
-            System.out.println("0 win!");
-            go = false;
+            System.out.println("0 win");
         }
-        return go;
     }
 
     static void countpalyers(int count) {
