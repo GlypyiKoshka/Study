@@ -23,7 +23,7 @@ public class XO {
         while (go) {
             System.out.println("Введите координаты: ");
 
-            countpalyers(count);
+            countpalyers(count,go);
             charornum(scanner);
 
             int f = scanner.nextInt();
@@ -41,13 +41,10 @@ public class XO {
             } else if (field[f - 1][s - 1].equals(" ") && count % 2 != 0) {
                 field[f - 1][s - 1] = "0";
                 count++;
-            } else if (count == 9) {
-                System.out.println("Eng game ");
-                go = false;
             }
 
             printfield(field);
-            whowinner(field, go);
+            whowinner(field, count, go);
         }
     }
 
@@ -58,7 +55,7 @@ public class XO {
         }
     }
 
-    static boolean whowinner(String[][] field, boolean go) {
+    static boolean whowinner(String[][] field, int count, boolean go) {
         for (int i = 0; i < field.length; i++) {
             if (field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[i][0].equals(" ")) {
                 System.out.println("win " + field[i][0]);
@@ -68,8 +65,10 @@ public class XO {
                 System.out.println("win " + field[0][i]);
                 go = false;
                 break;
+            } else if (count == 9) {
+                go = false;
+                System.out.println("Eng game ");
             } else diagonal(field, go);
-            break;
         }
         return go;
     }
@@ -91,10 +90,13 @@ public class XO {
         return go;
     }
 
-    static void countpalyers(int count) {
-        if (count % 2 == 0) {
+    static boolean countpalyers(int count, boolean go) {
+        if (count % 2 == 0 && go) {
             System.out.println("X go");
-        } else System.out.println("0 go");
+        } else if (count % 2 != 0 && go) {
+            System.out.println("0 go");
+        }
+        return go;
     }
 
     static void empty(String[][] field) {
