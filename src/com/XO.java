@@ -25,10 +25,12 @@ public class XO {
 
             countpalyers(count);
 
+            charornum(scanner);
+
             int f = scanner.nextInt();
             int s = scanner.nextInt();
 
-            while (f < 1 || f > 3 || s < 1 || s > 3 || !field[f - 1][s - 1].equals(" ")) {
+            while (f < 1 || f > 3 || s < 1 || s > 3 || !field[f - 1][s - 1].equals(" ") || scanner.hasNextInt(f)) {
                 System.out.println("Неверные координаты, повторите ввод: ");
                 f = scanner.nextInt();
                 s = scanner.nextInt();
@@ -48,6 +50,13 @@ public class XO {
             printfield(field);
             whowinner(field, go);
 
+        }
+    }
+
+    private static void charornum(Scanner scanner) {
+        while (!scanner.hasNextInt()) {
+            System.out.println("Это не цифра");
+            scanner.next();
         }
     }
 
