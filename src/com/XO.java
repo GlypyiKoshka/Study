@@ -90,13 +90,12 @@ public class XO {
         return go;
     }
 
-    static boolean countpalyers(int count, boolean go) {
+    static void countpalyers(int count, boolean go) {
         if (count % 2 == 0 && go) {
             System.out.println("X go");
         } else if (count % 2 != 0 && go) {
             System.out.println("0 go");
         }
-        return go;
     }
 
     static void empty(String[][] field) {
