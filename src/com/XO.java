@@ -53,29 +53,36 @@ public class XO {
 
     static boolean whowinner(String[][] field, boolean go) {
         for (int i = 0; i < field.length; i++) {
-            if (field[0][i].equals(field[1][i]) && field[1][i].equals(field[2][i]) && !field[0][i].equals(" ") || field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[0][i].equals(" ")) {
+            if (field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[i][0].equals(" ")) {
+                System.out.println("win " + field[i][0]);
                 go = false;
-                System.out.println("X win!");
-            } else if (field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[0][i].equals(" ")) {
+                break;
+            } else if (field[0][i].equals(field[1][i]) && field[1][i].equals(field[2][i]) && !field[0][i].equals(" ")) {
+                System.out.println("win " + field[0][i]);
                 go = false;
-                System.out.println("0 win!");
-            } else diagonal(field);
-            break;
+                break;
+            } else diagonal(field, go);
         }
         return go;
     }
 
-    static void diagonal(String[][] field) {
+    static boolean diagonal(String[][] field, boolean go) {
         if (field[0][0].equals("X") && field[1][1].equals("X") && field[2][2].equals("X")) { // \ диагональ
             System.out.println("X win");
+            go = false;
         } else if (field[2][0].equals("X") && field[1][1].equals("X") && field[0][2].equals("X")) { // / диагональ
             System.out.println("X win");
+            go = false;
         } else if (field[0][0].equals("0") && field[1][1].equals("0") && field[2][2].equals("0")) { // \ диагональ
             System.out.println("0 win");
+            go = false;
         } else if (field[2][0].equals("0") && field[1][1].equals("0") && field[0][2].equals("0")) { // / диагональ
             System.out.println("0 win");
+            go = false;
         }
+        return go;
     }
+
 
     static void countpalyers(int count) {
         if (count % 2 == 0) {
