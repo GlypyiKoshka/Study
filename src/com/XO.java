@@ -24,7 +24,6 @@ public class XO {
             System.out.println("Введите координаты: ");
 
             countpalyers(count);
-
             charornum(scanner);
 
             int f = scanner.nextInt();
@@ -49,7 +48,6 @@ public class XO {
 
             printfield(field);
             whowinner(field, go);
-
         }
     }
 
@@ -92,7 +90,6 @@ public class XO {
         }
         return go;
     }
-
 
     static void countpalyers(int count) {
         if (count % 2 == 0) {
