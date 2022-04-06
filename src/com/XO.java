@@ -75,6 +75,7 @@ public class XO {
             System.out.println("win " + field[0][2]);
             return false;
         }
+        return false;
     }
 
     static void countpalyers(int count) {
