@@ -23,8 +23,7 @@ public class XO {
         while (go) {
             System.out.println("Введите координаты: ");
 
-            countpalyers(count,go);
-            charornum(scanner);
+            countpalyers(count);
 
             int f = scanner.nextInt();
             int s = scanner.nextInt();
@@ -34,68 +33,54 @@ public class XO {
                 f = scanner.nextInt();
                 s = scanner.nextInt();
             }
-
+            String turn = "X";
             if (field[f - 1][s - 1].equals(" ") && count % 2 == 0) {
-                field[f - 1][s - 1] = "X";
-                count++;
-            } else if (field[f - 1][s - 1].equals(" ") && count % 2 != 0) {
-                field[f - 1][s - 1] = "0";
+                field[f - 1][s - 1] = turn;
+                if (count % 2 != 0) {
+                    turn = "0";
+                }
+//                field[f - 1][s - 1] = count % 2 == 0 ? "X" : "0";
                 count++;
             }
 
             printfield(field);
-            whowinner(field, count, go);
+            go = whowinner(field);
+
+            if (count == 9) {
+                System.out.println("Ничья");
+                go = false;
+            }
+
         }
     }
 
-    private static void charornum(Scanner scanner) {
-        while (!scanner.hasNextInt()) {
-            System.out.println("Это не цифра");
-            scanner.next();
-        }
-    }
-
-    static boolean whowinner(String[][] field, int count, boolean go) {
+    static boolean whowinner(String[][] field) {
         for (int i = 0; i < field.length; i++) {
-            if (field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[i][0].equals(" ")) {
+            if (field[i][0].equals(field[i][1]) && field[i][1].equals(field[i][2]) && !field[i][0].equals(" ")) { // горизонталь
                 System.out.println("win " + field[i][0]);
-                go = false;
-                break;
-            } else if (field[0][i].equals(field[1][i]) && field[1][i].equals(field[2][i]) && !field[0][i].equals(" ")) {
+                return false;
+            } else if (field[0][i].equals(field[1][i]) && field[1][i].equals(field[2][i]) && !field[0][i].equals(" ")) { // вертикаль
                 System.out.println("win " + field[0][i]);
-                go = false;
-                break;
-            } else if (count == 9) {
-                go = false;
-                System.out.println("Eng game ");
-            } else diagonal(field, go);
+                return false;
+            }
         }
-        return go;
+        return diagonal(field);
     }
 
-    static boolean diagonal(String[][] field, boolean go) {
-        if (field[0][0].equals("X") && field[1][1].equals("X") && field[2][2].equals("X")) { // \ диагональ
-            System.out.println("X win");
-            go = false;
-        } else if (field[2][0].equals("X") && field[1][1].equals("X") && field[0][2].equals("X")) { // / диагональ
-            System.out.println("X win");
-            go = false;
-        } else if (field[0][0].equals("0") && field[1][1].equals("0") && field[2][2].equals("0")) { // \ диагональ
-            System.out.println("0 win");
-            go = false;
-        } else if (field[2][0].equals("0") && field[1][1].equals("0") && field[0][2].equals("0")) { // / диагональ
-            System.out.println("0 win");
-            go = false;
+    static boolean diagonal(String[][] field) {
+        if (field[0][0].equals(field[1][1]) && field[1][1].equals(field[2][2]) && !field[0][0].equals(" ")) {
+            System.out.println("win " + field[0][0]);
+            return false;
+        }else if (field[0][2].equals(field[1][1]) && field[1][1].equals(field[2][0]) && !field[2][0].equals(" ")) {
+            System.out.println("win " + field[0][2]);
+            return false;
         }
-        return go;
     }
 
-    static void countpalyers(int count, boolean go) {
-        if (count % 2 == 0 && go) {
+    static void countpalyers(int count) {
+        if (count % 2 == 0) {
             System.out.println("X go");
-        } else if (count % 2 != 0 && go) {
-            System.out.println("0 go");
-        }
+        } else System.out.println("0 go");
     }
 
     static void empty(String[][] field) {
