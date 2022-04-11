@@ -33,16 +33,13 @@ public class XO {
                 f = scanner.nextInt();
                 s = scanner.nextInt();
             }
-            String turn = "X";
-            if (field[f - 1][s - 1].equals(" ") && count % 2 == 0) {
-                field[f - 1][s - 1] = turn;
-                if (count % 2 != 0) {
-                    turn = "0";
-                }
-//                field[f - 1][s - 1] = count % 2 == 0 ? "X" : "0";
-                count++;
-            }
 
+            if (field[f - 1][s - 1].equals(" ")) {
+                field[f - 1][s - 1] = count % 2 == 0 ? "X" : "0"; // сокращенная форма
+                count++;                                          //   String turn = "X";
+            }                                                     //   field[f - 1][s - 1] = turn;
+                                                                  //   if (count % 2 != 0) {
+                                                                  //     turn = "0";
             printfield(field);
             go = whowinner(field);
 
@@ -75,13 +72,14 @@ public class XO {
             System.out.println("win " + field[0][2]);
             return false;
         }
-        return false;
+        return true;
     }
 
     static void countpalyers(int count) {
         if (count % 2 == 0) {
             System.out.println("X go");
         } else System.out.println("0 go");
+
     }
 
     static void empty(String[][] field) {
