@@ -28,9 +28,7 @@ public class massiv2Max {
 //                System.out.println(arr[j]);
 
             }
-            if (sum > max) {
-                max = sum;
-            }
+
             System.out.println(" = " + sum);
         }
         System.out.println(" Макс = " + max);
