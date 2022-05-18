@@ -9,6 +9,7 @@ import java.util.Scanner;
         Пользователь вводит значения N и M, каждое больше 1. Программа генерирует таблицу соревнований случайным образом,
         после чего выводит на экран. Затем нужно вывести занятые командами места в формате номер места - номер команды
         */
+
 public class Teams {
     public static void main(String[] args) {
 
@@ -17,8 +18,17 @@ public class Teams {
         int m = sc.nextInt();
         int[][] arr = new int[n][m];
 
+        Random(arr);
         Table(arr);
-        add(arr);
+
+    }
+
+    static int Sum(int[] arr) {
+        int sum = 0;
+        for (int i = 0; i < arr.length; i++) {
+                sum += arr[i];
+            }
+        return sum;
     }
 
     static void Table(int[][] arr) {
@@ -34,29 +44,28 @@ public class Teams {
         System.out.println("+-+-+-+");
     }
 
-    static int add(int[][] arr) {
+    static void Random(int[][] arr) {
         Random Random = new Random();
-        int count = 0;
-        int sum = 0;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
                 arr[i][j] = Random.nextInt(10) + 1;
-                sum += arr[i][j];
             }
-            whowinner(arr, sum);
-            count++;
-            System.out.println(count + ". " + sum);
         }
-        return sum;
     }
 
-    static void whowinner(int[][] arr, int sum) {
+    static int[] Sort(int [][]arr) {
+        int[] tmp = new int[0];
+        int s = Sum(arr[1]);
         for (int i = 0; i < arr.length; i++) {
-            int min = arr[i][0];
             for (int j = 0; j < arr[i].length; j++) {
-                int lin = arr[0][j];
+//                if()
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
             }
         }
+        return tmp;
     }
+
 }
 
