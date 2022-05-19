@@ -20,14 +20,16 @@ public class Teams {
 
         Random(arr);
         Table(arr);
-
+        int sum = Sum(arr[0],n);
+        System.out.println(sum);
     }
 
-    static int Sum(int[] arr) {
+    static int Sum(int[] arr, int n) {
+        int[] total = new int [n];
         int sum = 0;
-        for (int i = 0; i < arr.length; i++) {
-                sum += arr[i];
-            }
+        for (int i = 0; i < total.length; i++) {
+            arr[i] += total[i];
+        }
         return sum;
     }
 
@@ -53,19 +55,21 @@ public class Teams {
         }
     }
 
-    static int[] Sort(int [][]arr) {
-        int[] tmp = new int[0];
-        int s = Sum(arr[1]);
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-//                if()
-                tmp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = tmp;
-            }
-        }
-        return tmp;
-    }
+//    static int[] Sort(int[][] arr) {
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = 0; j < arr[i].length; j++) {
+//                int y = Sum(arr[i]);
+//                int x = Sum(arr[0]);
+//                if (y > x) {
+//                }
+//                tmp = arr[i];
+//                arr[i] = arr[j];
+//                arr[j] = tmp;
+//            }
+//        }
+//    }
 
 }
+
+
 
