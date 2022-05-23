@@ -18,22 +18,51 @@ public class Teams {
         int m = sc.nextInt();
         int[][] arr = new int[n][m];
 
-        Random(arr);
-        Table(arr);
-        int sum = Sum(arr[0],n);
-        System.out.println(sum);
+        createrandominarray(arr);
+        printtable(arr);
+        printsum(arr);
+        sorting(addsuminarray(arr));
+        printsorting(arr);
+
     }
 
-    static int Sum(int[] arr, int n) {
-        int[] total = new int [n];
-        int sum = 0;
-        for (int i = 0; i < total.length; i++) {
-            arr[i] += total[i];
+    static int[] sorting(int[] arr) {
+        for (int i = 1; i < arr.length; i++) {
+            int min = i;
+            if (arr[i] < arr[min]) {
+                i = min;
+            }
+            int n = arr[i];
+            arr[i] = arr[min];
+            arr[min] = n;
+            System.out.println(n);
         }
-        return sum;
+        return arr;
     }
 
-    static void Table(int[][] arr) {
+    static void printsorting(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+             int [] k = sorting(arr[i]);
+            System.out.print(k[i] + " ");
+        }
+    }
+
+    static int[] addsuminarray(int[][] arr) {
+        int[] k = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            k[i] = sum(arr[i]);
+        }
+        return k;
+    }
+
+    static void printsum(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            int k = sum(arr[i]);
+            System.out.print(k + " ");
+        }
+    }
+
+    static void printtable(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.println();
             System.out.println("+-+-+-+");
@@ -46,30 +75,24 @@ public class Teams {
         System.out.println("+-+-+-+");
     }
 
-    static void Random(int[][] arr) {
-        Random Random = new Random();
+    static void createrandominarray(int[][] arr) {
+        Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] = Random.nextInt(10) + 1;
+                arr[i][j] = random.nextInt(10) + 1;
             }
         }
     }
 
-//    static int[] Sort(int[][] arr) {
-//        for (int i = 0; i < arr.length; i++) {
-//            for (int j = 0; j < arr[i].length; j++) {
-//                int y = Sum(arr[i]);
-//                int x = Sum(arr[0]);
-//                if (y > x) {
-//                }
-//                tmp = arr[i];
-//                arr[i] = arr[j];
-//                arr[j] = tmp;
-//            }
-//        }
-//    }
-
+    static int sum(int[] arr) {
+        int result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            result += arr[i];
+        }
+        return result;
+    }
 }
+
 
 
 
