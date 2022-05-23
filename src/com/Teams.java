@@ -21,21 +21,24 @@ public class Teams {
         createrandominarray(arr);
         printtable(arr);
         printsum(arr);
-        sorting(addsuminarray(arr));
-        printsorting(arr);
+        int[] sumarray = new int[arr.length];
+        sumarray = addsuminarray(arr);
+        printsorting(sumarray());
 
     }
 
     static int[] sorting(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            int min = i;
-            if (arr[i] < arr[min]) {
-                i = min;
+        boolean sorted = false;
+        while (!sorted) {
+            sorted = true;
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (arr[i] > arr[i + 1]) {
+                    int n = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = n;
+                    sorted = false;
+                }
             }
-            int n = arr[i];
-            arr[i] = arr[min];
-            arr[min] = n;
-            System.out.println(n);
         }
         return arr;
     }
@@ -48,7 +51,7 @@ public class Teams {
     }
 
     static int[] addsuminarray(int[][] arr) {
-        int[] k = new int[arr.length];
+//        int[] k = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
             k[i] = sum(arr[i]);
         }
