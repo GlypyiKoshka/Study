@@ -18,16 +18,43 @@ public class Teams {
         int m = sc.nextInt();
         int[][] arr = new int[n][m];
 
-        createrandominarray(arr);
-        printtable(arr);
-        printsum(arr);
-        int[] sumarray = new int[arr.length];
-        sumarray = addsuminarray(arr);
-        printsorting(sumarray());
 
+        createRandomInArray(arr);
+        printTable(arr);
+        int[] sumarray = addSumInArray(arr);
+        addSumInArray(arr);
+        System.out.println(printArray(sumarray));
+        sortTeams(sumarray);
     }
 
-    static int[] sorting(int[] arr) {
+    static int[] sortTeams(int[] sumarray) {
+        int[] teamNumbers = new int[sumarray.length];
+        for (int i = 0; i < teamNumbers.length; i++) {
+            teamNumbers[i] = i;
+            for (int j = 0; j < i; j++) {
+                sumarray[i] = i;
+            }
+            boolean sorted = false;
+            while (!sorted) {
+                sorted = true;
+                for (int k = 0; k < teamNumbers.length - 1; k++) {
+                    if (teamNumbers[k] > teamNumbers[k + 1]) {
+                        int n = teamNumbers[k];
+                        teamNumbers[k] = teamNumbers[k + 1];
+                        teamNumbers[k + 1] = n;
+                        sorted = false;
+                    }
+                }
+            }
+        }
+        // получает массив сумм, возвращает массив номеров команд, упорядоченных по убыванию суммы очков
+        // сортировать массив sumarray по убыванию
+        // когда при сортировке массива sumarray нужно поменять местами i и j элементы
+        // меняем также местами i и j элементы в массиве номеров команд
+        return teamNumbers;
+    }
+
+    /*static int[] sorting(int[] arr) {
         boolean sorted = false;
         while (!sorted) {
             sorted = true;
@@ -41,31 +68,25 @@ public class Teams {
             }
         }
         return arr;
-    }
+    }*/
 
-    static void printsorting(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-             int [] k = sorting(arr[i]);
-            System.out.print(k[i] + " ");
-        }
-    }
-
-    static int[] addsuminarray(int[][] arr) {
-//        int[] k = new int[arr.length];
+    static int[] addSumInArray(int[][] arr) {
+        int[] k = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
             k[i] = sum(arr[i]);
         }
+
         return k;
     }
 
-    static void printsum(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int k = sum(arr[i]);
-            System.out.print(k + " ");
+    static int printArray(int[] sumarray) {
+        for (int i = 0; i < sumarray.length; i++) {
+            System.out.println(sumarray[i]);
         }
+        return 0;
     }
 
-    static void printtable(int[][] arr) {
+    static void printTable(int[][] arr) {
         for (int i = 0; i < arr.length; i++) {
             System.out.println();
             System.out.println("+-+-+-+");
@@ -78,7 +99,7 @@ public class Teams {
         System.out.println("+-+-+-+");
     }
 
-    static void createrandominarray(int[][] arr) {
+    static void createRandomInArray(int[][] arr) {
         Random random = new Random();
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
